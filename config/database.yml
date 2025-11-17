@@ -1,0 +1,23 @@
+# Database Configuration
+
+# PostgreSQL template for Her Finance application
+default: &default
+  host: localhost
+  port: 5432
+  database: her_finance_db
+  user: finance_user
+  password: her_finance_password  # Change this in production!
+  schema_file: "sql/schema.sql"
+  data_file: "sql/sample_data.sql"
+
+# Environment-specific settings using PostgreSQL template
+development:
+  <<: *default
+
+test:
+  <<: *default
+  database: her_finance_db_test
+
+production:
+  <<: *default
+  # Override with environment variables or local config
